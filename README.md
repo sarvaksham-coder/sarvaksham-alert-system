@@ -1,12 +1,29 @@
-# sarvaksham-alert-system
-Language: Python 3 | Build Command: pip install -r requirements.txt | Start Command: gunicorn app:app
+# 📡 Sarvaksham Alert System
+
+This is a Flask-based webhook system to receive real-time alerts (like from Chartink) and forward them to a Telegram group/channel using a bot.
+
+---
+
+## 🔧 Setup
+
+### 📁 Files Needed
+
+- app.py → Main application code (see below)
+- requirements.txt
+- Procfile
+
+---
+
+### 🧠 Full app.py Code
+
+```python
 from flask import Flask, request
 import requests
 
 app = Flask(_name_)
 
-TELEGRAM_BOT_TOKEN = 'your_bot_token_here'
-TELEGRAM_CHAT_ID = 'your_chat_id_here'
+TELEGRAM_BOT_TOKEN = '7269300718:AAHYByBEUEjE9ev_Wb8rVjAMAx6OMAFFiGc'
+TELEGRAM_CHAT_ID = '-1002136945794'  # Your Telegram group/channel ID
 
 @app.route('/alert-receive', methods=['POST'])
 def alert_receive():
@@ -30,32 +47,4 @@ def alert_receive():
         'parse_mode': 'Markdown'
     }
     requests.post(url, data=payload)
-    return 'Alert sent to Telegram', 200from flask import Flask, request, jsonify
-import requests
-
-app = Flask(_name_)
-
-# Replace with your actual bot token and chat ID
-TELEGRAM_BOT_TOKEN = 'your_bot_token_here'
-TELEGRAM_CHAT_ID = 'your_chat_id_here'
-
-@app.route('/alert-receive', methods=['POST'])
-def alert_receive():
-    try:
-        data = request.json
-
-        # Build the message using data safely
-        message = f"""
-📢 Chartink Alert Received 📉
-
-🔹 Symbol: {data.get('symbol', 'N/A')}
-🔹 Open: {data.get('open', 'N/A')}
-🔹 High: {data.get('high', 'N/A')}
-🔹 Low: {data.get('low', 'N/A')}
-🔹 Close: {data.get('close', 'N/A')}
-🔹 VWAP: {data.get('vwap', 'N/A')}
-🔹 Volume: {data.get('volume', 'N/A')}
-        """
-
-        # Telegram API endpoint
-        url = f"https://api.telegram.org/bot{TELEGRA…
+    return 'Alert sent to Telegram', 200
