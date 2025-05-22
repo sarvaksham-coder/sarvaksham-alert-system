@@ -48,3 +48,6 @@ def alert_receive():
     }
     requests.post(url, data=payload)
     return 'Alert sent to Telegram', 200
+git add requirements.txt
+git commit -m "Added requirements.txt for Render deploy"
+git push origin main
