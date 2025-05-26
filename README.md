@@ -4,7 +4,7 @@ import requests
 app = Flask(__name__)
 
 TELEGRAM_BOT_TOKEN = '7269300718:AAHYByBEUEjE9ev_Wb8rVjAMAx6OMAFFiGc'
-TELEGRAM_CHAT_ID = '-https://t.me/c/2587354739/22'  # ✅ Updated Chat ID from your link
+TELEGRAM_CHAT_ID = '-1002587354739  # ✅ Updated Chat ID from your link
 
 @app.route('/alert-receive', methods=['POST'])
 def alert_receive():
@@ -29,5 +29,5 @@ def alert_receive():
     requests.post(url, data=payload)
     return 'Alert sent to Telegram', 200
 git add app.py
-git commit -m "Updated Chat ID to -https://t.me/c/2587354739/22
+git commit -m "Updated Chat ID to -1002587354739
 git push origin main
